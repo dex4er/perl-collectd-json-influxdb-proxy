@@ -1,0 +1,10 @@
+[Unit]
+Description=Translate collectd JSON HTTP request to Influx Data line protocol
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/opt/collectd-json-influxdb-proxy/collectd_json_influxdb_proxy.pl daemon -m production -l http://*:5826
+
+[Install]
+WantedBy=multi-user.target
