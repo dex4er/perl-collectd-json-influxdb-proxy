@@ -5,7 +5,6 @@ use v5.14;
 use Mojolicious::Lite;
 
 use POSIX qw(strftime);
-use Scalar::Util::Numeric qw(isint);
 
 post '/' => sub {
     my ($c) = @_;
@@ -17,7 +16,7 @@ post '/' => sub {
     for my $value (@$value_list) {
         my $keys = join ',', $value->{plugin}, map { join '=', $_ => $value->{$_} } grep { defined $value->{$_} and $value->{$_} ne '' } qw(host plugin_instance type type_instance);
         my $values = $value->{values};
-        my $fields = join ',', map { join '=', $value->{dsnames}[$_] => $values->[$_] . (isint $values->[$_] ? 'i' : '') } 0 .. $#$values;
+        my $fields = join ',', map { join '=', $value->{dsnames}[$_] => $values->[$_] } 0 .. $#$values;
         my $time = int($value->{time} * 1e9);
         $lines .= (join ' ', $keys, $fields, $time) . "\n";
     }

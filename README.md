@@ -8,7 +8,6 @@ Requirements:
 
 * Perl >= 5.14
 * Mojolicious (apt install libmojolicious-perl)
-* Scalar::Util::Numeric (apt install libscalar-util-numeric-perl)
 
 
 Configuration for collectd:
@@ -18,8 +17,8 @@ Configuration for collectd:
     <Node "collectd-json-influxdb-proxy">
        URL "http://localhost:5826/"
        Format "JSON"
-       BufferSize 16384
-       Timeout 45000
+       BufferSize 129024
+       Timeout 5000
     </Node>
 </Plugin>
 ```
