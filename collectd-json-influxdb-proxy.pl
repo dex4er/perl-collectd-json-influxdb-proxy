@@ -32,7 +32,7 @@ post '/' => sub {
             '"' . $c->req->method,
             $c->req->url,
             'HTTP/' . $c->req->version . '"',
-            $tx->res->code,
+            ($tx->res->code//'520'),
             $c->req->body_size,
             '"' . ($c->req->headers->referrer//'') . '"',
             '"' . ($c->req->headers->user_agent//'') . '"',
